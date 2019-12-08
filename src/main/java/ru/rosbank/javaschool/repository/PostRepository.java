@@ -1,23 +1,17 @@
 package ru.rosbank.javaschool.repository;
 
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
-import ru.rosbank.javaschool.dto.PostSaveRequestDto;
 import ru.rosbank.javaschool.model.PostModel;
 
 import javax.sql.DataSource;
-import javax.swing.text.html.Option;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.DoubleStream;
 
 @Repository
 public class PostRepository {
