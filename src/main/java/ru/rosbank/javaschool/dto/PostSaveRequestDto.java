@@ -3,7 +3,6 @@ package ru.rosbank.javaschool.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.rosbank.javaschool.model.PostModel;
 
 @Data
 @NoArgsConstructor
