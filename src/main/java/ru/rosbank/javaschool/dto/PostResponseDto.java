@@ -3,7 +3,7 @@ package ru.rosbank.javaschool.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.rosbank.javaschool.model.PostModel;
+import ru.rosbank.javaschool.entity.PostEntity;
 
 @Data
 @NoArgsConstructor
@@ -14,12 +14,12 @@ public class PostResponseDto {
   private String media;
   private int likes;
 
-  public static PostResponseDto from(PostModel model) {
+  public static PostResponseDto from(PostEntity model) {
     return new PostResponseDto(
-        model.getId(),
-        model.getContent(),
-        model.getMedia(),
-        model.getLikes()
+            model.getId(),
+            model.getContent(),
+            model.getMedia(),
+            model.getLikes()
     );
   }
 }

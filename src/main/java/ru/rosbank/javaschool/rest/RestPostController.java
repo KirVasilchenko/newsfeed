@@ -10,53 +10,59 @@ import ru.rosbank.javaschool.service.PostService;
 
 import java.util.List;
 
-@RestController // ко всем методам будет дописано @ResponseBody
+@RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/posts")
 public class RestPostController {
-  private final PostService service;
-  private final Logger logger = LoggerFactory.getLogger(RestPostController.class);
+    private final PostService service;
+    private final Logger logger = LoggerFactory.getLogger(RestPostController.class);
 
-  // @ResponseBody
-  // AutoConfiguration -> Jackson
-  // HttpMessageConverters -> RequestResponse...
-  @GetMapping // @RequestMapping(method = GET) -> GET /api/posts
-  public List<PostResponseDto> getAll() {
-    logger.info(Thread.currentThread().getName());
-    return service.getAll();
-  }
+//    @GetMapping
+//    public List<PostResponseDto> getAll() {
+//        logger.info(Thread.currentThread().getName());
+//        return service.getAll();
+//    }
 
-  // ТТП
-  @GetMapping(params = "q") // фильтрация по наличию параметра
-  public List<PostResponseDto> searchByContent(@RequestParam String q) {
-    return service.searchByContent(q);
-  }
+    @GetMapping(params = "q")
+    public List<PostResponseDto> searchByContent(@RequestParam String q) {
+        return service.searchByContent(q);
+    }
 
-  // -> x-www-urlencoded...
-  // -> multipart/form-data
-  // Content-Type: MIME тип
-  // POST -> create/update
-  @PostMapping // DataBinding
-  public PostResponseDto save(@RequestBody PostSaveRequestDto dto) {
-    return service.save(dto);
-  }
+    @PostMapping
+    public PostResponseDto save(@RequestBody PostSaveRequestDto dto) {
+        return service.save(dto);
+    }
 
-  // DELETE /api/posts/:id -> ?itemId=10 -> req.getParameter()
-  @DeleteMapping("/{id}")
-// public void removeById(@PathVariable("id") int id)
-// if param name = path variable name, то дополнительно ничего не нужно
-  public void removeById(@PathVariable int id) {
-//    throw new BadRequestException("bad.request");
-    service.removeById(id);
-  }
+    @DeleteMapping("/{id}")
+    public void removeById(@PathVariable int id) {
+        service.removeById(id);
+    }
 
-  @PostMapping("/{id}/likes")
-  public PostResponseDto likeById(@PathVariable int id) {
-    return service.likeById(id);
-  }
+    @PostMapping("/{id}/likes")
+    public PostResponseDto likeById(@PathVariable int id) {
+        return service.likeById(id);
+    }
 
-  @DeleteMapping("/{id}/likes")
-  public PostResponseDto dislikeById(@PathVariable int id) {
-    return service.dislikeById(id);
-  }
+    @DeleteMapping("/{id}/likes")
+    public PostResponseDto dislikeById(@PathVariable int id) {
+        return service.dislikeById(id);
+    }
+
+    @GetMapping(params = {"last", "step"})
+    public List<PostResponseDto> getSomePosts(@RequestParam("last") int lastPost, @RequestParam("step") int step) {
+        logger.info(Thread.currentThread().getName());
+        return service.getSomePosts(lastPost, step);
+    }
+
+    @GetMapping(params = {"first"})
+    public int getCountOfNewPosts(@RequestParam("first") int firstPostId) {
+        logger.info(Thread.currentThread().getName());
+        return service.getCountOfNewPosts(firstPostId);
+    }
+
+    @GetMapping
+    public int getFirstPostId() {
+        logger.info(Thread.currentThread().getName());
+        return service.getFirstId();
+    }
 }
