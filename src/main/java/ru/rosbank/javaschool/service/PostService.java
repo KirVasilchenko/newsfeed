@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import ru.rosbank.javaschool.dto.PostResponseDto;
 import ru.rosbank.javaschool.dto.PostSaveRequestDto;
 import ru.rosbank.javaschool.exception.BadRequestException;
-import ru.rosbank.javaschool.exception.NotFoundException;
 import ru.rosbank.javaschool.model.PostModel;
 import ru.rosbank.javaschool.repository.PostRepository;
 
