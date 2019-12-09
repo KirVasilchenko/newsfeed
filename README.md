@@ -1,1 +1,1 @@
-[![Build Status](https://travis-ci.org/KirVasilchenko/newsfeed.svg?branch=master)](https://travis-ci.org/KirVasilchenko/newsfeed)
+[![Build Status](https://travis-ci.org/KirVasilchenko/newsfeed.svg?branch=master)](https://travis-ci.org/KirVasilchenko/newsfeed)[![codecov](https://codecov.io/gh/KirVasilchenko/newsfeed/branch/master/graph/badge.svg)](https://codecov.io/gh/KirVasilchenko/newsfeed)
