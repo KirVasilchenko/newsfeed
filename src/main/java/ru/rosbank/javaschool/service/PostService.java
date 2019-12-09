@@ -30,14 +30,6 @@ public class PostService {
                 .collect(Collectors.toList());
     }
 
-//  public PostResponseDto save(PostSaveRequestDto dto) {
-//    logger.info(dto.toString());
-//    return repository.save(PostModel.from(dto))
-//            .map(PostResponseDto::from)
-//            .orElseThrow(BadRequestException::new);
-//  }
-
-
     public PostResponseDto save(PostSaveRequestDto dto) {
         logger.info(dto.toString());
         return PostResponseDto.from(
@@ -65,17 +57,13 @@ public class PostService {
 
     public PostResponseDto dislikeById(int id) {
         final PostEntity entity = repository.findById(id).orElseThrow(BadRequestException::new);
-        if (entity.getLikes() > 0) {
             entity.setLikes(entity.getLikes() - 1);
-        }
         return PostResponseDto.from(entity);
     }
 
-//  Adding new features
-
     public List<PostResponseDto> getSomePosts(int lastPost, int step) {
         return repository.findAll().stream()
-                .sorted((o1, o2) -> -(o1.getId() - o2.getId()))
+                .sorted((o1, o2) -> o2.getId() - o1.getId())
                 .skip(lastPost)
                 .limit(step)
                 .map(PostResponseDto::from)
