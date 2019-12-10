@@ -17,12 +17,6 @@ public class RestPostController {
     private final PostService service;
     private final Logger logger = LoggerFactory.getLogger(RestPostController.class);
 
-//    @GetMapping
-//    public List<PostResponseDto> getAll() {
-//        logger.info(Thread.currentThread().getName());
-//        return service.getAll();
-//    }
-
     @GetMapping(params = "q")
     public List<PostResponseDto> searchByContent(@RequestParam String q) {
         return service.searchByContent(q);
@@ -48,14 +42,14 @@ public class RestPostController {
         return service.dislikeById(id);
     }
 
-    @GetMapping(params = {"last", "step"})
-    public List<PostResponseDto> getSomePosts(@RequestParam("last") int lastPost, @RequestParam("step") int step) {
+    @GetMapping(params = {"lastPost", "step"})
+    public List<PostResponseDto> getSomePosts(@RequestParam int lastPost, @RequestParam int step) {
         logger.info(Thread.currentThread().getName());
         return service.getSomePosts(lastPost, step);
     }
 
-    @GetMapping(params = {"first"})
-    public int getCountOfNewPosts(@RequestParam("first") int firstPostId) {
+    @GetMapping(params = {"firstPostId"})
+    public int getCountOfNewPosts(@RequestParam int firstPostId) {
         logger.info(Thread.currentThread().getName());
         return service.getCountOfNewPosts(firstPostId);
     }
