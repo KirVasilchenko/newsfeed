@@ -44,7 +44,6 @@ public class PostService {
     }
 
     public void removeById(int id) {
-//    repository.removeById(id);
         repository.deleteById(id);
     }
 
