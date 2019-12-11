@@ -42,10 +42,10 @@ public class RestPostController {
         return service.dislikeById(id);
     }
 
-    @GetMapping(params = {"lastPost", "step"})
-    public List<PostResponseDto> getSomePosts(@RequestParam int lastPost, @RequestParam int step) {
+    @GetMapping(params = {"lastPost", "count"})
+    public List<PostResponseDto> getSomePosts(@RequestParam int lastPost, @RequestParam int count) {
         logger.info(Thread.currentThread().getName());
-        return service.getSomePosts(lastPost, step);
+        return service.getSomePosts(lastPost, count);
     }
 
     @GetMapping(params = {"firstPostId"})
